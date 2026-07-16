@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: #fbf7f2;
+  color: #1f2433;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(31, 36, 51, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 60px rgba(31, 36, 51, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .glass-dark {
+    background: rgba(31, 36, 51, 0.7);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .premium-gradient {
+    background: linear-gradient(135deg, #fff5f6 0%, #fbf7f2 50%, #f5ece0 100%);
+  }
+  .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 4px 16px rgba(31,36,51,0.05);
+    font-size: 0.95rem;
+    color: #1f2433;
+    outline: none;
+    transition: box-shadow 0.2s;
+  }
+  .input:focus {
+    box-shadow: 0 0 0 3px rgba(255,94,128,0.18), 0 4px 16px rgba(31,36,51,0.05);
+  }
+  .input::placeholder { color: #b0bac8; }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .pb-safe { padding-bottom: calc(0.5rem + var(--safe-bottom)); }
+  .pt-safe { padding-top: calc(0.5rem + var(--safe-top)); }
+  .text-balance { text-wrap: balance; }
+}
+
+/* Recharts tooltip theming */
+.recharts-default-tooltip {
+  background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.7) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(31,36,51,0.1) !important;
+}
